@@ -31,7 +31,7 @@
     </head>
 
 
-    <body class="w3-light-grey">
+    <body class="w3-light-grey" id="target">
 
         <!-- Page Container -->
         <div class="w3-content w3-margin-top" style="max-width:1400px;">
@@ -322,6 +322,26 @@
             <i class="fa fa-linkedin w3-hover-opacity"></i>
             <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
         </footer>
+
+<script>
+$(function () {
+ alert("test");
+    var specialElementHandlers = {
+        '#editor': function (element,renderer) {
+            return true;
+        }
+    };
+ $('#cmd').click(function () {
+        var doc = new jsPDF();
+        doc.fromHTML(
+            $('#target').html(), 15, 15, 
+            { 'width': 170, 'elementHandlers': specialElementHandlers }, 
+            function(){ doc.save('sample-file.pdf'); }
+        );
+
+    });  
+});
+</script>
 
     </body>
 </html>
