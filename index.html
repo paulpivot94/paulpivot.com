@@ -345,8 +345,8 @@ $(function () {
 
     });
 
-    
-    $('#btn-download').click(function () {
+   
+    $(document).on("click", "a.fileDownloadSimpleRichExperience", function() {
         $.fileDownload($(this).attr('href'), {
             preparingMessageHtml: "We are preparing your report, please wait...",
             failMessageHtml: "There was a problem generating your report, please try again."
