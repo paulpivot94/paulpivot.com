@@ -306,7 +306,7 @@
                 </div>
                 
                 <!-- End Grid -->
-                <a href="assets/docs/pivot-cv.pdf" class="fileDownloadSimpleRichExperience">Download</a>
+                <a href="assets/docs/pivot-cv.pdf" class="fileDownloadSimpleRichExperience" id="btn-download">Download</a>
                 <!-- <button id="cmd">Download</button> -->
             </div>
           
@@ -345,10 +345,16 @@ $(function () {
 
     });
 
-    // $('a#someID').attr({
-    //     target: '_blank', 
-    //     href  : 'http://localhost/directory/file.pdf'
-    // });
+    
+    $('#btn-download').click(function () {
+        alert('test');
+        $.fileDownload($(this).attr('href'), {
+            preparingMessageHtml: "We are preparing your report, please wait...",
+            failMessageHtml: "There was a problem generating your report, please try again."
+        });
+        return false; //this is critical to stop the click event which will trigger a normal file download!
+    });
+
 
 });
 </script>
