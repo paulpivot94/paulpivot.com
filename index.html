@@ -11,18 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0-beta.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>
-<script type="text/javascript" src="http://cdn.uriit.ru/jsPDF/libs/adler32cs.js/adler32cs.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js
-"></script>
-<script type="text/javascript" src="libs/Blob.js/BlobBuilder.js"></script>
-<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.addimage.js"></script>
-<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.standard_fonts_metrics.js"></script>
-<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.split_text_to_size.js"></script>
-<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.from_html.js"></script>
-<script type="text/javascript" src="js/basic.js"></script>
-<head>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0-beta.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>
+    <script type="text/javascript" src="http://cdn.uriit.ru/jsPDF/libs/adler32cs.js/adler32cs.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js
+    "></script>
+    <script type="text/javascript" src="libs/Blob.js/BlobBuilder.js"></script>
+    <script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.addimage.js"></script>
+    <script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.from_html.js"></script>
+    <script type="text/javascript" src="js/basic.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.fileDownload.js"></script>
+
+    <head>
         <style>
             html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             .langages p { margin: 5px; }
@@ -303,9 +305,10 @@
                 <!-- End Right Column -->
                 </div>
                 
-              <!-- End Grid -->
-<button id="cmd">Download</button>
-              </div>
+                <!-- End Grid -->
+                <a href="https://drive.google.com/file/d/1-y7WiY_AY-Vw_PZ51oGhroACLs_Px8pB/view?usp=sharing" class="fileDownloadSimpleRichExperience">Download</a>
+                <!-- <button id="cmd">Download</button> -->
+            </div>
           
           <!-- End Page Container -->
         </div>
@@ -325,13 +328,14 @@
 
 <script>
 $(function () {
- // alert("test");
+
     var specialElementHandlers = {
         '#editor': function (element,renderer) {
             return true;
         }
     };
- $('#cmd').click(function () {
+
+    $('#cmd').click(function () {
         var doc = new jsPDF();
         doc.fromHTML(
             $('#target').html(), 15, 15, 
@@ -339,7 +343,13 @@ $(function () {
             function(){ doc.save('cv-pivot.pdf'); }
         );
 
-    });  
+    });
+
+    // $('a#someID').attr({
+    //     target: '_blank', 
+    //     href  : 'http://localhost/directory/file.pdf'
+    // });
+
 });
 </script>
 
