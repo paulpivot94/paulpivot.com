@@ -305,6 +305,17 @@
 
                 <!-- End Right Column -->
                 </div>
+
+                <div id="preparing-file-modal" title="Preparing report..." style="display: none;">
+                    We are preparing your report, please wait...
+                 
+                    <!--Throw what you'd like for a progress indicator below-->
+                    <div class="ui-progressbar-value ui-corner-left ui-corner-right" style="width: 100%; height:22px; margin-top: 20px;"></div>
+                </div>
+                 
+                <div id="error-modal" title="Error" style="display: none;">
+                    There was a problem generating your report, please try again.
+                </div>
                 
                 <!-- End Grid -->
                 <a href="./assets/docs/pivot-cv.pdf" class="fileDownloadSimpleRichExperience" id="btn-download">Download</a>
@@ -347,10 +358,22 @@ $(function () {
     });
 
    
-    $(document).on("click", "a.fileDownloadSimpleRichExperience", function() {
-        $.fileDownload('./assets/docs/pivot-cv.pdf', {
-            preparingMessageHtml: "We are preparing your report, please wait...",
-            failMessageHtml: "There was a problem generating your report, please try again."
+    $(document).on("click", "a.fileDownloadCustomRichExperience", function() {
+ 
+        var $preparingFileModal = $("#preparing-file-modal");
+
+        $preparingFileModal.dialog({ modal: true });
+
+        $.fileDownload($(this).attr('href'), {
+            successCallback: function(url) {
+
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function(responseHtml, url) {
+
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({ modal: true });
+            }
         });
         return false; //this is critical to stop the click event which will trigger a normal file download!
     });
